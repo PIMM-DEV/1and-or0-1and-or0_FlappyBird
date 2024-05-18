@@ -6,6 +6,7 @@ public class ScoreManager : MonoBehaviour
     public float Score;
     public float timer;
     [SerializeField] TextMeshProUGUI textMeshProUGUI;
+    [SerializeField] GameOverManager gameOverManager;
 
     void Awake()
     {
@@ -14,7 +15,10 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-        SetTimerAndScore();
+        if (!gameOverManager.isGameOver)
+        {
+            SetTimerAndScore();
+        }
 
         UpdateScoreTMP();
     }

@@ -6,6 +6,7 @@ public class TouchToJump : MonoBehaviour
     [SerializeField] float power;
     Rigidbody2D rb2D;
     Animator animator;
+    [SerializeField] GameOverManager gameOverManager;
     void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -14,7 +15,7 @@ public class TouchToJump : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !IsPointerOverUIObject())
+        if (Input.GetMouseButtonDown(0) && !IsPointerOverUIObject() && !gameOverManager.isGameOver)
         {
             rb2D.AddForce(Vector2.up * power, ForceMode2D.Impulse);
             if (gameObject.tag == "Bird")
